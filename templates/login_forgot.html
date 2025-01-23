@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パスワード再設定</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+
+</head>
+<body>
+    <div id="wrap">
+
+        <div id="login_container" >
+
+            <div class="login_login">
+                <p>Reset</p>
+            </div>
+
+            <div class="login_form">
+
+                <form id="reset_pass_form" action="/reset_pass" method="post">
+                    <div class="login_username_container">
+                        <div class="login_username">
+                            <p>Username</p>
+                        </div>
+                        <div class="login_username_input">
+                            <input type="text" id="login_f_username" name="login_f_username" placeholder="enter your username" maxlength="10" minlength="4" required>
+                        </div>
+                    </div>
+
+                    <div class="login_password_container">
+                        <div class="login_password">
+                            <p>New Password</p>
+                        </div>
+                        <div class="login_password_input">
+                            <input type="password" id="login_f_password" name="login_f_password" placeholder="enter your password" maxlength="10" minlength="4" pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*" 
+                            title="大文字、小文字、数字をそれぞれ含む4文字以上10文字以下のパスワードを入力してください。" required>
+                        </div>
+                    </div>
+
+                    <div class="login_submit">
+                        <input type="submit" value="Reset">
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="login_forgot">
+                <a href="{{url_for('login')}}">ログインはこちらから</a>
+            </div>
+
+        </div>
+        
+    </div>
+
+    <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+</body>
+</html>
