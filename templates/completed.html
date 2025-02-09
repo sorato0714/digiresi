@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スキャン完了</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/completed.css') }}">
+</head>
+<body>
+    <div class="checkmark">
+        <video src="/static/images/checkmark.mp4" autoplay playsinline muted></video>
+    </div>
+    <div>スキャン完了</div>
+    <div>
+        <a href="/completed">TOPへ</a>
+    </div>
+</body>
+</html>

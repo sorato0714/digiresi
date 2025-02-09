@@ -102,6 +102,18 @@ def membership():
 
 
 
+#トップページ
+@app.route("/index", methods=["GET", "POST"])
+def index():
+    return render_template("index.html")
+
+
+
+#スキャン完了
+@app.route("/completed")
+def completed():
+    return render_template("completed.html")
+
 #ログアウト
 @app.route("/logout")
 def logout():

@@ -3,9 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TOP</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+
+    <!-- GoogleFont -->
+    <!-- logo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Yuji+Mai&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    TOP
+    <div id="wrap">
+        <div class="logo_box">
+            <div class="logo"><img src="/static/images/logo.svg" alt="ロゴ"></div>
+            <div class="system_name">Digiresi</div>
+        </div>
+    </div>
+    <div class="search_date_scan">
+        <form action="#" class="search_box" method="GET">
+            <input type="text" name="keyword" placeholder="キーワードを入力">
+            <button type="submit">
+                <img src="/static/images/search.svg" alt="検索ボタン">
+            </button>
+        </form>
+        <form action="#" class="date_box" method="GET">
+            <input type="date" name="start_date">
+            <span>〜</span>
+            <input type="date" name="end_date">
+            <button type="submit">
+                <img src="/static/images/search.svg" alt="検索ボタン">
+            </button>
+        </form>
+        <div class="scan_btn">
+            <a href="#"><img src="/static/images/scan_btn.png" alt="スキャンボタン"></a>
+        </div>
+    </div>
+    <div class="main">
+        <div class="main_nav">
+            <img src="/static/images/food.svg" alt="食費">
+            <img src="/static/images/traffic.svg" alt="交通費">
+            <img src="/static/images/stay.svg" alt="宿泊費">
+            <img src="/static/images/daily.svg" alt="日用品">
+            <img src="/static/images/hobby.svg" alt="遊興費">
+            <img src="/static/images/miscellaneous.svg" alt="雑費">
+        </div>
+        <div class="main_receipt">
+        </div>
+    </div>
 </body>
 </html>
