@@ -119,7 +119,7 @@ body{
 
 
 
-/* ----------スキャンボタン---------- */
+/* ----------メイン---------- */
 .main{
     display: flex;
     height: calc(100vh - 24.5vh);
@@ -141,7 +141,7 @@ body{
 .main_nav img:hover{
     transform: translateX(20px);
     scale: 1.1;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 .main_receipt{
     width: 80vw;

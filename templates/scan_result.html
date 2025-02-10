@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>スキャン完了</title>
+    <title>スキャンデータ確認</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/completed.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/scan_result.css') }}">
 
-    <!-- GoogleFont -->
+        <!-- GoogleFont -->
     <!-- logo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,12 +15,13 @@
 
 </head>
 <body>
-    <div class="checkmark">
-        <img src="/static/images/checkmark.gif" alt="チェックマーク">
+    <div class="back">
+        <a href="/index">＜戻る</a>
     </div>
-    <div class="scan_completed">スキャン完了</div>
-    <div class="top_box">
-        <a href="/index" class="top_btn">TOPへ</a>
+    <div class="receipt_scan"></div>
+    <div class="btn_set">
+        <a href="#" class="rescan">再撮影</a>
+        <a href="/index" class="commit">確定</a>
     </div>
 </body>
 </html>

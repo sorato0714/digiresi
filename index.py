@@ -16,6 +16,7 @@ def conn_db():
     return conn
 
 
+
 #ログイン
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -75,6 +76,7 @@ def reset_pass():
     return render_template("login_forgot.html")
 
 
+
 #新規会員登録
 @app.route("/membership", methods=["GET", "POST"])
 def membership():
@@ -109,10 +111,19 @@ def index():
 
 
 
+#スキャン確認
+@app.route("/scan_result", methods=["GET", "POST"])
+def scan_result():
+    return render_template("scan_result.html")
+
+
+
 #スキャン完了
 @app.route("/completed")
 def completed():
     return render_template("completed.html")
+
+
 
 #ログアウト
 @app.route("/logout")
@@ -120,6 +131,8 @@ def logout():
     session.pop("user_id", None)
     flash("ログアウトしました。", "success")
     return redirect(url_for("login"))
+
+
 
 if __name__ == "__main__":
     app.route(debug=True)

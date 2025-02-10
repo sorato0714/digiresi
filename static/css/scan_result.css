@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+body{
+    background-color: #cdeaf3;
+}
+.back{
+    display: flex;
+    align-items: end;
+    height: 15vh;
+}
+.back a{
+    text-decoration: none;
+    font-family: "Lexend", serif;
+    color: #000;
+    font-size: 2.0rem;
+    font-weight: bold;
+    padding: 0 0 0 10vw;
+}
+.back a:hover{
+    opacity: 0.5;
+    transition: 0.5s;
+}
+.receipt_scan{
+    width: 50vw;
+    height: 60vh;
+    margin: 0 auto;
+    background-color: blueviolet;
+}
+.btn_set{
+    height: 25vh;
+    padding: 0 25vw 0 0;
+    display: flex;
+    justify-content: right;
+}
+.rescan{
+    text-decoration: none;
+    background-color: #f75953;
+    height: 3vh;
+    margin: 6vh 0 0 2vw;
+    padding: 1% 2%;
+    color: #fff;
+    border: 6px outset rgb(173, 8, 8);
+    font-family: "Lexend", serif;
+    font-size: 1.5rem;
+}
+.commit{
+    text-decoration: none;
+    background-color: #00ff00;
+    height: 3vh;
+    margin: 6vh 0 0 2vw;
+    padding: 1% 2%;
+    color: #fff;
+    border: 6px outset #11a111;
+    font-family: "Lexend", serif;
+    font-size: 1.5rem;
+}
+.btn_set a:hover{
+    opacity: 0.5;
+    transition: 0.5s;
+}
