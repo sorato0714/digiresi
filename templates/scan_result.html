@@ -7,21 +7,57 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/scan_result.css') }}">
 
-        <!-- GoogleFont -->
-    <!-- logo -->
+    <!-- GoogleFont -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Yuji+Mai&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <div class="back">
         <a href="/index">＜戻る</a>
     </div>
-    <div class="receipt_scan"></div>
-    <div class="btn_set">
-        <a href="#" class="rescan">再撮影</a>
-        <a href="/index" class="commit">確定</a>
+
+    <div class="receipt_box">
+        <div class="receipt_scan">
+            <!-- スキャン画像がここに入る -->
+            <img src="{{ url_for('static', filename='uploads/receipt.png') }}" alt="スキャン画像">
+        </div>
+
+        <div class="scan_detail">
+            <div class="scan_h1">
+                <h1>スキャン結果</h1>
+            </div>
+            <form action="/save" method="POST">
+                <div class="store_name">
+                    <label>店名：</label>
+                    <input type="text" name="store_name" value="{{ store_name }}"><br><br>
+                </div>
+                <div class="receipt_date">
+                    <label>日付：</label>
+                    <input type="date" name="receipt_date" value="{{ receipt_date }}"><br><br>
+                </div>
+                <div class="amount">
+                    <label>金額：</label>
+                    <input type="text" name="amount" value="{{ amount }}"><br><br>
+                </div>
+                <div class="category">
+                    <label>カテゴリ：</label>
+                    <select name="category">
+                        <option value="食費" {% if category == "食費" %}selected{% endif %}>食費</option>
+                        <option value="交通費" {% if category == "交通費" %}selected{% endif %}>交通費</option>
+                        <option value="宿泊費" {% if category == "宿泊費" %}selected{% endif %}>宿泊費</option>
+                        <option value="日用品費" {% if category == "日用品費" %}selected{% endif %}>日用品費</option>
+                        <option value="遊興費" {% if category == "遊興費" %}selected{% endif %}>遊興費</option>
+                        <option value="雑費" {% if category == "雑費" %}selected{% endif %}>雑費</option>
+                    </select><br><br>
+                </div>
+
+                <div class="btn_set">
+                    <a href="/rescan" class="rescan">再撮影</a>
+                    <button type="submit" class="commit">確定</button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>

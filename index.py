@@ -111,10 +111,21 @@ def index():
 
 
 
+#スキャン実行
+@app.route("/scan")
+def scan_page():
+    return render_template("scan.html")
+
+
 #スキャン確認
 @app.route("/scan_result", methods=["GET", "POST"])
 def scan_result():
-    return render_template("scan_result.html")
+    #仮のOCR結果
+    store_name = "HALスーパー"
+    amount = "3300"
+    receipt_date = "2025-02-10"
+    category = "食費"
+    return render_template("scan_result.html", store_name=store_name, amount=amount, receipt_date=receipt_date, category=category)
 
 
 

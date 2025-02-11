@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スキャン</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/scan.css') }}">
+
+</head>
+<body>
+    <h1>スキャン開始</h1>
+    <video id="video" autoplay playsinline></video>
+    <script src="{{ url_for('static', filename='js/scan.js') }}"></script>
+</body>
+</html>

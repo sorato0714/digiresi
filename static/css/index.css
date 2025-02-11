@@ -29,7 +29,7 @@ body{
 .search_date_scan{
     display: flex;
     justify-content: right;
-    padding: 2vh 0;
+    padding: 0 0 2vh 0;
     background-color: red;
 }
 
@@ -122,7 +122,7 @@ body{
 /* ----------メイン---------- */
 .main{
     display: flex;
-    height: calc(100vh - 24.5vh);
+    height: calc(100vh - 22.5vh);
     background-color: rebeccapurple;
 }
 .main_nav{
