@@ -23,6 +23,7 @@ body{
 .receipt_box{
     display: flex;
     justify-content: space-between;
+    margin: 0 0 0 5vw;
 }
 .receipt_scan{
     width: 40vw;
@@ -39,7 +40,6 @@ body{
 .scan_detail{
     width: 40vw;
     height: 60vh;
-    margin: 0 5vw 0 0;
 }
 .scan_detail input{
     height: 5vh;
