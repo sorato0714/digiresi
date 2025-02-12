@@ -25,6 +25,22 @@ body{
     text-decoration: none;
     color: #000;
 }
+.logout_btn{
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 66vw;
+}
+.logout_btn a{
+    text-decoration: none;
+    color: #fff;
+    background-color: #f06969;
+    border: 4px outset #830606;
+    font-family: "Lexend", serif;
+}
+.logout_btn a:hover{
+    opacity: 0.5;
+    transition: 0.5s;
+}
 
 
 
