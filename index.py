@@ -296,6 +296,39 @@ def get_receipts_by_date():
 
 
 
+#画面に表示されているものでソート
+@app.route('/get_filtered_receipts')
+def get_filtered_receipts():
+    category_id = request.args.get('category_id')
+    start_date = request.args.get('start_date')
+    end_date = request.args.get('end_date')
+    keyword = request.args.get('keyword')
+
+    query = "SELECT * FROM receipts WHERE 1=1"
+    params = []
+
+    if category_id:
+        query += " AND category_id = %s"
+        params.append(category_id)
+
+    if start_date and end_date:
+        query += " AND receipt_date BETWEEN %s AND %s"
+        params.extend([start_date, end_date])
+
+    if keyword:
+        query += " AND store_name LIKE %s"
+        params.append(f"%{keyword}%")
+
+    conn = conn_db()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute(query, tuple(params))
+    receipts = cursor.fetchall()
+    conn.close()
+
+    return jsonify(receipts)
+
+
+
 # スキャン結果を表示するページ
 @app.route('/scan_result')
 def scan_result():

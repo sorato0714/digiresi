@@ -21,6 +21,10 @@ body{
     font-weight: 900;
     font-style: italic;
 }
+.system_name a{
+    text-decoration: none;
+    color: #000;
+}
 
 
 
@@ -28,7 +32,7 @@ body{
 .search_date_scan{
     display: flex;
     justify-content: right;
-    padding: 0 0 1vh 0;
+    padding: 0 1.5vw 1vh 0;
 }
 
 

@@ -85,12 +85,6 @@ document.querySelector('.date_box').addEventListener('submit', function (e) {
 
     console.log(`選択された日付範囲: ${startDate} ～ ${endDate}`);
 
-    // 日付の順序を確認
-    if (new Date(startDate) > new Date(endDate)) {
-        alert('開始日は終了日より前の日付にしてください。');
-        return;
-    }
-
     if (!startDate || !endDate) {
         alert('開始日と終了日を両方入力してください。');
         return;
@@ -100,8 +94,7 @@ document.querySelector('.date_box').addEventListener('submit', function (e) {
         .then(response => response.json())
         .then(receipts => {
             console.log("取得したデータ:", receipts);
-            displayReceipts(receipts);  // 領収書を表示する関数を呼び出す
+            displayReceipts(receipts);  // 既存の領収書を表示する関数を利用
         })
         .catch(error => console.error("データ取得中にエラーが発生しました:", error));
 });
-
