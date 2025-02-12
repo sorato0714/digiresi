@@ -1,4 +1,4 @@
-from flask import Flask,render_template,redirect,request,url_for,flash,session,request
+from flask import Flask,render_template,redirect,request,url_for,flash,session,request, jsonify
 import mysql.connector, os, uuid, re, pytesseract
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
@@ -166,15 +166,26 @@ def membership():
 
 
 
-#トップページ
+# トップページ
 @app.route('/index')
 def index():
+    category_id = request.args.get('category_id')  # URLからcategory_idを取得
     conn = conn_db()  # conn_db関数でMySQL接続を取得
     cursor = conn.cursor(dictionary=True)
     
     try:
-        cursor.execute("SELECT image_path FROM receipts ORDER BY receipt_created_at DESC")
-        receipts = cursor.fetchall()  # 全ての結果を取得
+        if category_id:
+            # 特定のカテゴリーIDでフィルタリングするクエリ
+            query = "SELECT image_path FROM receipts WHERE category_id = %s ORDER BY receipt_created_at DESC"
+            cursor.execute(query, (category_id,))
+            print(f"カテゴリーID {category_id} でフィルタリング中")
+        else:
+            # 全てのレシートを取得するクエリ
+            query = "SELECT image_path FROM receipts ORDER BY receipt_created_at DESC"
+            cursor.execute(query)
+            print("全レシートを取得中")
+        
+        receipts = cursor.fetchall()  # クエリ結果を取得
     except Exception as e:
         print(f"データベースクエリエラー: {e}")
         receipts = []
@@ -187,18 +198,26 @@ def index():
 
 
 
+# カテゴリごとの領収書データを返すAPIエンドポイント
+@app.route('/get_receipts/<int:category_id>', methods=['GET'])
+def get_receipts(category_id):
+    conn = conn_db()
+    cursor = conn.cursor(dictionary=True)
+    
+    try:
+        # カテゴリに一致する領収書データを取得
+        query = "SELECT image_path FROM receipts WHERE category_id = %s ORDER BY receipt_created_at DESC"
+        cursor.execute(query, (category_id,))
+        receipts = cursor.fetchall()
+    except Exception as e:
+        print(f"データベースクエリエラー: {e}")
+        receipts = []
+    finally:
+        cursor.close()
+        conn.close()
 
-
-
-#スキャン実行
-@app.route('/scan')
-def scan():
-    user_agent = request.headers.get('User-Agent')
-    if "iPhone" in user_agent:  # iPhoneを判別
-        return render_template('scan_iphone.html')
-    else:
-        return render_template('scan.html')  # PC用
-
+    # JSON形式で返す
+    return jsonify(receipts)
 
 
 # スキャン結果を表示するページ

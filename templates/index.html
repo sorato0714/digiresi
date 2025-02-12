@@ -42,14 +42,26 @@
     </div>
     <div class="main">
         <div class="main_nav">
-            <img src="/static/images/food.svg" alt="食費">
-            <img src="/static/images/traffic.svg" alt="交通費">
-            <img src="/static/images/stay.svg" alt="宿泊費">
-            <img src="/static/images/daily.svg" alt="日用品">
-            <img src="/static/images/hobby.svg" alt="遊興費">
-            <img src="/static/images/miscellaneous.svg" alt="雑費">
+            <a href="javascript:void(0);" class="category-btn" data-category="1">
+                <img src="/static/images/food.svg" alt="食費">
+            </a>
+            <a href="javascript:void(0);" class="category-btn" data-category="2">
+                <img src="/static/images/traffic.svg" alt="交通費">
+            </a>
+            <a href="javascript:void(0);" class="category-btn" data-category="3">
+                <img src="/static/images/stay.svg" alt="宿泊費">
+            </a>
+            <a href="javascript:void(0);" class="category-btn" data-category="4">
+                <img src="/static/images/daily.svg" alt="日用品">
+            </a>
+            <a href="javascript:void(0);" class="category-btn" data-category="5">
+                <img src="/static/images/hobby.svg" alt="遊興費">
+            </a>
+            <a href="javascript:void(0);" class="category-btn" data-category="6">
+                <img src="/static/images/miscellaneous.svg" alt="雑費">
+            </a>
         </div>
-        <div class="main_receipt">
+        <div class="main_receipt" id="receipt-container">
             {% for receipt in receipts %}
             <div class="grid-item">
                 <img src="{{ receipt.image_path }}" alt="領収書画像" class="receipt_image" onclick="openModal('{{ receipt.image_path }}')">
@@ -63,6 +75,6 @@
             <img class="modal-content" id="modalImage">
         </div>
     </div>
-    <script src="{{ url_for('static', filename='js/modal.js') }}" defer></script>
-</body>
+    <script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+    </body>
 </html>
