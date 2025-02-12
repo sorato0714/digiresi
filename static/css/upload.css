@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+body{
+    background-color: #cdeaf3;
+}
+.upload_box{
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    font-family: "Lexend", serif;
+    font-size: 3.0rem;
+    padding: 40vh 0;
+}
+.upload_box input{
+    margin: 1% 0 0 0;
+}
+.upload_box button{
+    background-color: #00ff00;
+    height: 6vh;
+    margin: 6vh 0 0 2vw;
+    padding: 0 2% 0 2%;
+    color: #fff;
+    border: 6px outset #11a111;
+    font-family: "Lexend", serif;
+    font-size: 1.5rem;
+}

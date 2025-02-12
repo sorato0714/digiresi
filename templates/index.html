@@ -37,7 +37,7 @@
             </button>
         </form>
         <div class="scan_btn">
-            <a href="#"><img src="/static/images/scan_btn.png" alt="スキャンボタン"></a>
+            <a href="/upload"><img src="/static/images/scan_btn.png" alt="スキャンボタン"></a>
         </div>
     </div>
     <div class="main">
@@ -50,7 +50,19 @@
             <img src="/static/images/miscellaneous.svg" alt="雑費">
         </div>
         <div class="main_receipt">
+            {% for receipt in receipts %}
+            <div class="grid-item">
+                <img src="{{ receipt.image_path }}" alt="領収書画像" class="receipt_image" onclick="openModal('{{ receipt.image_path }}')">
+            </div>
+        {% endfor %}
+        </div>
+
+        <!-- モーダルウィンドウ -->
+        <div id="imageModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modalImage">
         </div>
     </div>
+    <script src="{{ url_for('static', filename='js/modal.js') }}" defer></script>
 </body>
 </html>

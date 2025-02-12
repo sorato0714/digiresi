@@ -43,11 +43,13 @@ body{
 }
 .scan_detail input{
     height: 5vh;
+    background-color: #dcf5dc;
 }
 .scan_detail select{
     height: 5vh;
+    background-color: #dcf5dc;
 }
-.scan_h1{
+.scan_detail h1{
     font-family: "Lexend", serif;
     font-size: 3.0rem;
     margin: 0 0 5vh 0;

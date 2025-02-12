@@ -6,11 +6,6 @@
     <title>スキャンデータ確認</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/scan_result.css') }}">
-
-    <!-- GoogleFont -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Yuji+Mai&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="back">
@@ -19,26 +14,24 @@
 
     <div class="receipt_box">
         <div class="receipt_scan">
-            <!-- スキャン画像がここに入る -->
-            <img src="{{ url_for('static', filename='uploads/receipt.png') }}" alt="スキャン画像">
+            <img src="{{ image_file }}" alt="スキャン結果">
         </div>
 
         <div class="scan_detail">
-            <div class="scan_h1">
-                <h1>スキャン結果</h1>
-            </div>
+            <h1>スキャン結果</h1>
             <form action="/save" method="POST">
+                <input type="hidden" name="image_file" value="{{ image_file }}">
                 <div class="store_name">
                     <label>店名：</label>
-                    <input type="text" name="store_name" value="{{ store_name }}"><br><br>
+                    <input type="text" name="store_name" value="{{ store_name|default('') }}"><br><br>
                 </div>
                 <div class="receipt_date">
                     <label>日付：</label>
-                    <input type="date" name="receipt_date" value="{{ receipt_date }}"><br><br>
+                    <input type="date" name="receipt_date" value="{{ receipt_date|default('') }}"><br><br>
                 </div>
                 <div class="amount">
                     <label>金額：</label>
-                    <input type="text" name="amount" value="{{ amount }}"><br><br>
+                    <input type="text" name="amount" value="{{ amount|default('') }}"><br><br>
                 </div>
                 <div class="category">
                     <label>カテゴリ：</label>
@@ -51,7 +44,6 @@
                         <option value="雑費" {% if category == "雑費" %}selected{% endif %}>雑費</option>
                     </select><br><br>
                 </div>
-
                 <div class="btn_set">
                     <a href="/rescan" class="rescan">再撮影</a>
                     <button type="submit" class="commit">確定</button>

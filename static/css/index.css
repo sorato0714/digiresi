@@ -7,7 +7,6 @@ body{
 .logo_box{
     display: flex;
     height: 13vh;
-    background-color: #2d8ec9;
     margin: 2vh 0 0 3vw;
 }
 .logo img{
@@ -29,8 +28,7 @@ body{
 .search_date_scan{
     display: flex;
     justify-content: right;
-    padding: 0 0 2vh 0;
-    background-color: red;
+    padding: 0 0 1vh 0;
 }
 
 
@@ -123,7 +121,6 @@ body{
 .main{
     display: flex;
     height: calc(100vh - 22.5vh);
-    background-color: rebeccapurple;
 }
 .main_nav{
     display: flex;
@@ -131,8 +128,7 @@ body{
     justify-content: space-between;
     width: 20vw;
     height: 100%;
-    padding: 1vh 0 1vh 1vw;
-    background-color: #2d8ec9;
+    padding: 2vh 0 1vh 1vw;
 }
 .main_nav img{
     width: 15vw;
@@ -143,8 +139,59 @@ body{
     scale: 1.1;
     transition: 0.3s;
 }
-.main_receipt{
+.main_receipt {
     width: 80vw;
+    max-height: 100vh; /* スクロールが出る最大の高さを指定 */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    overflow-y: auto; /* 縦方向のスクロールを有効化 */
+}
+.grid-item {
+    height: 250px;
+    border: 1px solid #000;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.receipt_image {
+    width: 100%;
     height: 100%;
-    background-color: aqua;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
+
+/* モーダルウィンドウ */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    padding: 8vh 0 0 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
 }
