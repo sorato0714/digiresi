@@ -38,3 +38,39 @@ document.querySelectorAll('.category-btn').forEach(button => {
 });
 
 
+
+//キーワード検索
+document.getElementById('search-form').addEventListener('submit', function (e) {
+    e.preventDefault();  // フォームの送信を防ぐ
+
+    const keyword = document.getElementById('keyword').value;
+    console.log("検索キーワード:", keyword);
+
+    fetch(`/get_receipts_by_keyword?keyword=${encodeURIComponent(keyword)}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log("取得したデータ:", data);
+            updateReceipts(data);
+        })
+        .catch(error => console.error("データ取得エラー:", error));
+});
+
+function updateReceipts(receipts) {
+    const mainReceipt = document.querySelector('.main_receipt');
+    mainReceipt.innerHTML = ''; // 一旦内容をクリア
+
+    if (receipts.length === 0) {
+        mainReceipt.innerHTML = '<p>該当する領収書がありません。</p>';
+        return;
+    }
+
+    receipts.forEach(receipt => {
+        const item = document.createElement('div');
+        item.classList.add('grid-item');
+        item.innerHTML = `<img src="${receipt.image_path}" alt="領収書画像" class="receipt_image">`;
+        mainReceipt.appendChild(item);
+    });
+}
+
+
+

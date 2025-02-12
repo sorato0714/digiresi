@@ -220,6 +220,34 @@ def get_receipts(category_id):
     return jsonify(receipts)
 
 
+
+#キーワード検索
+@app.route('/get_receipts_by_keyword', methods=['GET'])
+def get_receipts_by_keyword():
+    keyword = request.args.get('keyword', '').strip()
+    conn = conn_db()
+    cursor = conn.cursor(dictionary=True)
+    
+    try:
+        query = """
+            SELECT image_path 
+            FROM receipts 
+            WHERE REPLACE(store_name, ' ', '') LIKE REPLACE(%s, ' ', '')
+            ORDER BY receipt_created_at DESC
+        """
+
+        cursor.execute(query, (f"%{keyword}%",))
+        receipts = cursor.fetchall()
+        return jsonify(receipts)  # JSON形式でデータを返す
+    except Exception as e:
+        print(f"データベースエラー: {e}")
+        return jsonify([]), 500
+    finally:
+        cursor.close()
+        conn.close()
+
+
+
 # スキャン結果を表示するページ
 @app.route('/scan_result')
 def scan_result():
