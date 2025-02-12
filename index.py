@@ -221,6 +221,25 @@ def get_receipts(category_id):
 
 
 
+# Flaskエンドポイント（すべての領収書を取得）
+@app.route('/get_receipts/all')
+def get_all_receipts():
+    conn = conn_db()
+    cursor = conn.cursor(dictionary=True)
+    try:
+        cursor.execute("SELECT * FROM receipts ORDER BY receipt_created_at DESC")
+        receipts = cursor.fetchall()
+    except Exception as e:
+        print(f"データベースエラー: {e}")
+        receipts = []
+    finally:
+        cursor.close()
+        conn.close()
+
+    return jsonify(receipts)
+
+
+
 #キーワード検索
 @app.route('/get_receipts_by_keyword', methods=['GET'])
 def get_receipts_by_keyword():
@@ -245,6 +264,35 @@ def get_receipts_by_keyword():
     finally:
         cursor.close()
         conn.close()
+
+
+#日付検索
+@app.route('/get_receipts_by_date')
+def get_receipts_by_date():
+    start_date = request.args.get('start_date')
+    end_date = request.args.get('end_date')
+
+    if not start_date or not end_date:
+        return jsonify([])  # 日付が指定されていない場合は空リストを返す
+
+    try:
+        conn = conn_db()
+        cursor = conn.cursor(dictionary=True)
+        
+        query = """
+            SELECT * FROM receipts 
+            WHERE receipt_date BETWEEN %s AND %s 
+            ORDER BY receipt_created_at DESC
+        """
+        cursor.execute(query, (start_date, end_date))
+        receipts = cursor.fetchall()
+        cursor.close()
+        conn.close()
+    except Exception as e:
+        print(f"日付範囲検索エラー: {e}")
+        return jsonify([])  # エラー時は空リストを返す
+
+    return jsonify(receipts)
 
 
 

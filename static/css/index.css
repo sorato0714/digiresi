@@ -134,10 +134,17 @@ body{
     width: 15vw;
     height: 10vh;
 }
-.main_nav img:hover{
+.main_nav img:hover,
+.main_nav img.active {
+    transform: translateX(20px) scale(1.1);
+    transition: 0.3s;
+}
+.category-btn {
+    transition: 0.3s;
+}
+.category-btn.selected {
     transform: translateX(20px);
     scale: 1.1;
-    transition: 0.3s;
 }
 .main_receipt {
     width: 80vw;
