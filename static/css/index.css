@@ -182,6 +182,10 @@ body{
     border-radius: 5px;
     overflow: hidden;
 }
+.grid-item:hover{
+    opacity: 0.6;
+    transition: 0.5s;
+}
 
 .receipt_image {
     width: 100%;
